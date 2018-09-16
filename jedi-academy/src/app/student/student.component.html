@@ -1,6 +1,10 @@
-<div>
-  Student: {{student.name}}
-  <div [hidden]="!student.isJedi">
-    Jedi Temple: {{student.temple}}
+<div *ngIf="student"> <!-- Se for endefined ele não exibe -->
+  Student: <a href="#" (click)="clicked()">{{student?.name}}</a> <!--Se for undefined ele não lê o nome como exemplo-->
+  <div *ngIf="student.isJedi">
+    Jedi Temple: {{student?.temple}}
+    <button (click)="description.focus()">Focus!</button>
+    <br/>
+    <textarea #description></textarea>
   </div>
 </div>
+<p *ngIf="!student"> Sem Dados para Exibir !</p>

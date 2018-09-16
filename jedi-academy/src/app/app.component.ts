@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Student} from './student/student.model';
 
 @Component({ //< Decorator
   selector: 'jad-root', //nome - para ser usado em outras partes da aplicação
@@ -7,9 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  students: Student[] = [{name: 'Luke', isJedi: true, temple: 'Coruscant'},{name: 'Leia', isJedi: false},{name: 'Han Solo', isJedi: false}];
+
   /** o app.component.html consegue vê eles atributos */
-  luke = {name: 'Luke', isJedi: true, temple: 'Coruscant'}
-  leia = {name: 'Leia', isJedi: true}
-  han = {name: 'Han Solo', isJedi: false}
+  //alunos = [{name: 'Luke', isJedi: true, temple: 'Coruscant'},{name: 'Leia', isJedi: false},{name: 'Han Solo', isJedi: false}]
 }
 
