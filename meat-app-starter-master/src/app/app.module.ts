@@ -11,6 +11,7 @@ import { AboutComponent } from './about/about.component'
 import { ROUTES } from './app.routes';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
+import { RestaurantsService } from './restaurants/restaurant/restaurants.service';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { RestaurantComponent } from './restaurants/restaurant/restaurant.compone
     HttpModule,
     RouterModule.forRoot(ROUTES) //configurando Rotas
   ],
-  providers: [],
+  providers: [RestaurantsService], //modulo raiz - fica disponivel (ingetado) pra toda app componente e servicos, todos compartolham a mesma intacia deste
   bootstrap: [AppComponent]
 })
 export class AppModule { }
