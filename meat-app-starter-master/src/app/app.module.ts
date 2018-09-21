@@ -12,6 +12,7 @@ import { ROUTES } from './app.routes';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
 import { RestaurantsService } from './restaurants/restaurant/restaurants.service';
+import { RestaurantDetailComponent } from './src/app/restaurants/restaurant-detail/restaurant-detail.component';
 
 
 @NgModule({
@@ -21,14 +22,15 @@ import { RestaurantsService } from './restaurants/restaurant/restaurants.service
     HomeComponent,
     AboutComponent,
     RestaurantsComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    RestaurantDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(ROUTES) //configurando Rotas
   ],
-  providers: [RestaurantsService], //modulo raiz - fica disponivel (ingetado) pra toda app componente e servicos, todos compartolham a mesma intacia deste
+  providers: [RestaurantsService], //modulo raiz - fica disponivel (injetado) pra toda app componente e servicos, todos compartolham a mesma intacia deste
   bootstrap: [AppComponent]
 })
 export class AppModule { }
