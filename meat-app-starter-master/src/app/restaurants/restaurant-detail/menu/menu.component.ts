@@ -19,12 +19,8 @@ export class MenuComponent implements OnInit {
       .menuOfRestaurant(this.route.parent.snapshot.params['id']) /*router.parent , ao acessar rota de restaurantes foi passado o id do restaurante selecionado */
   }
 
-
-  addMenuItem(item: MenuItem) {
-    console.log(JSON.stringify(item))
-    console.log(this.route.parent.snapshot.params['id']);
-    
-    
+  addMenuItem(item: MenuItem){
+    console.log(item)
   }
-
+  
 }

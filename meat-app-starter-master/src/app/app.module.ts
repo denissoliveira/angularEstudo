@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms'
 
 
 import { AppComponent } from './app.component';
@@ -17,6 +18,8 @@ import { MenuComponent } from './restaurants/restaurant-detail/menu/menu.compone
 import { ShoppingCartComponent } from './restaurants/restaurant-detail/shopping-cart/shopping-cart.component';
 import { MenuItemComponent } from './restaurants/restaurant-detail/menu-item/menu-item.component';
 import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/reviews.component';
+import { ShoppingcartService } from './restaurants/restaurant-detail/shopping-cart/shopping-cart.service';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
@@ -31,14 +34,16 @@ import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/review
     MenuComponent,
     ShoppingCartComponent,
     MenuItemComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     RouterModule.forRoot(ROUTES) //configurando Rotas
   ],
-  providers: [RestaurantsService], //modulo raiz - fica disponivel (injetado) pra toda app componente e servicos, todos compartolham a mesma intacia deste
+  providers: [RestaurantsService,ShoppingcartService, {provide: LOCALE_ID, useValue: 'pt-BR'}], //modulo raiz - fica disponivel (injetado) pra toda app componente e servicos, todos compartolham a mesma intacia deste
   bootstrap: [AppComponent]
 })
 export class AppModule { }

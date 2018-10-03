@@ -6,7 +6,6 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { ErrorHandler } from '../../app.error-handler';
-import { TitleCasePipe } from "@angular/common";
 import { MenuItem } from "../restaurant-detail/menu-item/menu-item.model";
 
 
