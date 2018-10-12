@@ -22,6 +22,9 @@ import { ShoppingcartService } from './restaurants/restaurant-detail/shopping-ca
 import { OrderComponent } from './order/order.component';
 import { InputComponent } from './shared/input/input.component';
 import { RadioComponent } from './shared/radio/radio.component';
+import { OrderItemsComponent } from './order/order-items/order-items.component';
+import { OrderService } from './order/order.service';
+import { DeliveryCostsComponent } from './order/delivery-costs/delivery-costs.component';
 
 
 @NgModule({
@@ -39,7 +42,9 @@ import { RadioComponent } from './shared/radio/radio.component';
     ReviewsComponent,
     OrderComponent,
     InputComponent,
-    RadioComponent
+    RadioComponent,
+    OrderItemsComponent,
+    DeliveryCostsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,7 @@ import { RadioComponent } from './shared/radio/radio.component';
     FormsModule,
     RouterModule.forRoot(ROUTES) //configurando Rotas
   ],
-  providers: [RestaurantsService,ShoppingcartService, {provide: LOCALE_ID, useValue: 'pt-BR'}], //modulo raiz - fica disponivel (injetado) pra toda app componente e servicos, todos compartolham a mesma intacia deste
+  providers: [RestaurantsService, ShoppingcartService, OrderService, {provide: LOCALE_ID, useValue: 'pt-BR'}], //modulo raiz - fica disponivel (injetado) pra toda app componente e servicos, todos compartolham a mesma intacia deste
   bootstrap: [AppComponent]
 })
 export class AppModule { }
