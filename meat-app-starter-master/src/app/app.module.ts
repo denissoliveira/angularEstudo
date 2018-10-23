@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
@@ -10,21 +10,13 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
-import { RestaurantsService } from './restaurants/restaurant/restaurants.service';
 import { RestaurantDetailComponent } from './restaurants/restaurant-detail/restaurant-detail.component';
 import { MenuComponent } from './restaurants/restaurant-detail/menu/menu.component';
 import { ShoppingCartComponent } from './restaurants/restaurant-detail/shopping-cart/shopping-cart.component';
 import { MenuItemComponent } from './restaurants/restaurant-detail/menu-item/menu-item.component';
 import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/reviews.component';
-import { ShoppingcartService } from './restaurants/restaurant-detail/shopping-cart/shopping-cart.service';
-import { OrderComponent } from './order/order.component';
-import { InputComponent } from './shared/input/input.component';
-import { RadioComponent } from './shared/radio/radio.component';
-import { OrderItemsComponent } from './order/order-items/order-items.component';
-import { OrderService } from './order/order.service';
-import { DeliveryCostsComponent } from './order/delivery-costs/delivery-costs.component';
 import { OrderSummaryComponent } from './order/order-summary/order-summary.component';
-import { RatingComponent } from './shared/rating/rating.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -39,22 +31,17 @@ import { RatingComponent } from './shared/rating/rating.component';
     ShoppingCartComponent,
     MenuItemComponent,
     ReviewsComponent,
-    OrderComponent,
-    InputComponent,
-    RadioComponent,
-    OrderItemsComponent,
-    DeliveryCostsComponent,
-    OrderSummaryComponent,
-    RatingComponent
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(ROUTES) //configurando Rotas
+    //CoreModule, //O providers foram colocados arqui, providers é singleton | ficou obsoleto pq é importado em SharedModule.forRoot()
+    SharedModule.forRoot(),//forRoot trás os providers ficando global os providers //Modulos compartilhados, foi retirado modulos, estes etão dentro deste modulo, puxado pelo modulo raiz, sendo usado por outros modulos tbm
+    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules /* Carrega os modulos lazy em background*/}) //configurando Rotas
   ],
-  providers: [RestaurantsService, ShoppingcartService, OrderService, {provide: LOCALE_ID, useValue: 'pt-BR'}], //modulo raiz - fica disponivel (injetado) pra toda app componente e servicos, todos compartolham a mesma intacia deste
+  providers: [/* Foi criado em CORE, e importado estes providers tudo junto, deixando código mais limpo - RestaurantsService, ShoppingcartService, OrderService,*/ {provide: LOCALE_ID, useValue: 'pt-BR'}], //modulo raiz - fica disponivel (injetado) pra toda app componente e servicos, todos compartolham a mesma intacia deste, como singletons
   bootstrap: [AppComponent]
 })
 export class AppModule { }

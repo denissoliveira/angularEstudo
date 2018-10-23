@@ -21,3 +21,6 @@ import 'zone.js/dist/zone';
 //internacionalização colocando virgula no lugar de ´ponto
 import 'intl'
 import 'intl/locale-data/jsonp/pt-BR.js'
+
+//Para ficar a animação compativel com outros navegadores
+import 'web-animations-js/web-animations.min.js'

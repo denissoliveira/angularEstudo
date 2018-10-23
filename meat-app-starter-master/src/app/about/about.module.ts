@@ -8,7 +8,7 @@ const ROUTES: Routes = [
 
 @NgModule({
     declarations: [AboutComponent],
-    imports: [RouterModule.forChild(ROUTES)] //
+    imports: [RouterModule.forChild(ROUTES)] //configura Rotas, modulo de rotas junto com as rotas
 })
 export class AboutModule {}
 
