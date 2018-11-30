@@ -36,7 +36,14 @@ Expressões regulares usadas na validação de formulários
 
 `/^[0-9]*$/`
 
+## Produção 
+
 ## Upgrade para Angular 4.3
+### configuração de build de desenv
+`ng build`
+
+### configuração de build de desenv
+`ng build --prod`
 
 Dependências dos pacotes que devem ficar em package.json:
 
