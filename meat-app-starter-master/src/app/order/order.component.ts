@@ -12,10 +12,10 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 })
 export class OrderComponent implements OnInit {
 
-  //Reactive Forms - nome do form group
+  // Reactive Forms - nome do form group
   orderForm: FormGroup
 
-  delivery: number = 8 //valor poderia ser pego de um serviço ou banco etc
+  delivery = 8 // valor poderia ser pego de um serviço ou banco etc
 
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 
@@ -30,7 +30,7 @@ export class OrderComponent implements OnInit {
   constructor(private orderService: OrderService, private router: Router, private formBuilder: FormBuilder /*Reactive Forms*/) { }
 
   ngOnInit() {
-    //Reactive Forms
+    // Reactive Forms
     this.orderForm = this.formBuilder.group({
       name: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
       email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
@@ -44,9 +44,9 @@ export class OrderComponent implements OnInit {
     )
   }
 
-  //método que recebe group do tipo AbstractControl e retorna um "tipo json" chave tipo string e valor boleano
+  // método que recebe group do tipo AbstractControl e retorna um "tipo json" chave tipo string e valor boleano
   static equalsTo(group: AbstractControl): {[key:string] : boolean} {
-    //o get pega elemento do grupo (formGrupo)
+    // o get pega elemento do grupo (formGrupo)
     const email = group.get('email')
     const emailConfirmation = group.get('emailConfirmation')
     if (!email || !emailConfirmation) {
@@ -63,29 +63,29 @@ export class OrderComponent implements OnInit {
     return this.orderService.itemsValue()
   }
 
-  cartItems(){
+  cartItems() {
     return this.orderService.cartItems()
   }
 
-  increaseQty(item: CartItem){
+  increaseQty(item: CartItem) {
     this.orderService.increaseQty(item)
   }
 
-  decreaseQty(item: CartItem){
+  decreaseQty(item: CartItem) {
     this.orderService.decreaseQty(item)
   }
 
-  removeItem(item:CartItem) {
+  removeItem(item: CartItem) {
     this.orderService.removeItem(item)
   }
 
   checkOrder(order: Order) {
     order.orderItems = this.cartItems()
-      .map((item:CartItem)=>new OrderItem(item.quantity, item.menuItem.id));
-    //somente no momento de chamar o subscribe que é chamado o método http, igual a promise   js
-    this.orderService.checkOrder(order).subscribe((orderId: Order)=> {
-      this.router.navigate(['/order-summary'])
-      this.orderService.clear();
-    });
-  }  
+      .map((item: CartItem) => new OrderItem(item.quantity, item.menuItem.id))
+    this.orderService.checkOrder(order)
+      .subscribe( (orderId: string) => {
+        this.router.navigate(['/order-summary'])
+        this.orderService.clear()
+    })
+  }
 }

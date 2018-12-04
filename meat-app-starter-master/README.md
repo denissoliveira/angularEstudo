@@ -24,6 +24,9 @@
 
 `json-server db.json`
 
+Para usar como servidor https
+`node backend/server`
+
 ## Goodies
 
 Expressões regulares usadas na validação de formulários
