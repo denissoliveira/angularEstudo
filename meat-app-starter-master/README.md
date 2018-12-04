@@ -37,15 +37,40 @@ Expressões regulares usadas na validação de formulários
 `/^[0-9]*$/`
 
 ## Produção 
-
-## Upgrade para Angular 4.3
-### configuração de build de desenv
+#### configuração de build de desenv
 `ng build`
 
-### configuração de build de desenv
+#### configuração de build de produção
 `ng build --prod`
 
-Dependências dos pacotes que devem ficar em package.json:
+#### O mesmo vale para ng serve padrão para teste
+`ng serve --prod`
+
+##### - copie o conteúdo da pasta dist e coloqe em seu servidor (exp tomcat)
+
+
+# Base href
+#####Criar deploys em subdiretorios - vê video da aula ou procurar na documentação
+ng build --prod --bh=/nomeDiretorio/
+
+### ChangeLog 
+`npm i -g standard-version` ou `npm i --save-dev standard-version`
+
+# Add an npm run script to your package.json:
+
+```json
+{
+  "scripts": {
+    "release": "standard-version"
+  }
+}
+```
+
+Mais em https://github.com/conventional-changelog/standard-version/blob/master/README.md
+
+## Upgrade para Angular 4.3
+
+### Dependências dos pacotes que devem ficar em package.json:
 
 ```
 "dependencies": {
@@ -93,7 +118,7 @@ Dependências dos pacotes que devem ficar em package.json:
   }
 ```
 
-## Upgrade para Angular 6 (Apenas para a aulas finais)
+### Upgrade para Angular 6 (Apenas para a aulas finais)
 
 Dependências dos pacotes que devem ficar em package.json:
 
