@@ -24,8 +24,13 @@
 
 `json-server db.json`
 
-Para usar como servidor https
-`node backend/server`
+## nodemon
+Observando arquivos modificados
+`npm i nodemon -g`
+
+##Para usar como servidor https
+
+`nodemon --watch backend/dist/server.js`
 
 ## Goodies
 
@@ -68,6 +73,9 @@ ng build --prod --bh=/nomeDiretorio/
   }
 }
 ```
+
+
+
 
 Mais em https://github.com/conventional-changelog/standard-version/blob/master/README.md
 
