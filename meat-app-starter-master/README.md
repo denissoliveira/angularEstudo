@@ -30,7 +30,7 @@ Observando arquivos modificados
 
 ##Para usar como servidor https
 
-`nodemon --watch backend/dist/server.js`
+`nodemon -w backend backend/dist/server.jss`
 
 ## Goodies
 
