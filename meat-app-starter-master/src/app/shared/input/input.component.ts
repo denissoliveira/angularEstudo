@@ -9,10 +9,12 @@ export class InputComponent implements OnInit, AfterContentInit {
 
   @Input() label: string
   @Input() errorMessage: string
+  @Input() showTip = true
+
   input: any
 
   @ContentChild(NgModel) model: NgModel
-  //puxa a referência
+  // puxa a referência
   @ContentChild(FormControlName) control: FormControlName
 
   constructor() { }
@@ -21,7 +23,7 @@ export class InputComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.input = this.model || this.control //se não existir model usa control, senão erro
+    this.input = this.model || this.control // se não existir model usa control, senão erro
     if (this.input === undefined) {
       throw new Error ('Esse componente precisa ser usado com uma diretiva ngModel ou FormControlName')
     }

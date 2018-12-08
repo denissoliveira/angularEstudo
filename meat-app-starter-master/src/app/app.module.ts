@@ -42,14 +42,23 @@ import { LoginComponent } from './security/login/login.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    //CoreModule, //O providers foram colocados arqui, providers é singleton | ficou obsoleto pq é importado em SharedModule.forRoot()
-    SharedModule.forRoot(),//forRoot trás os providers ficando global os providers //Modulos compartilhados, foi retirado modulos, estes etão dentro deste modulo, puxado pelo modulo raiz, sendo usado por outros modulos tbm
-    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules /* Carrega os modulos lazy em background*/}) //configurando Rotas
+    /* CoreModule, O providers foram colocados arqui, providers é singleton | ficou
+    obsoleto pq é importado em SharedModule.forRoot()*/
+    SharedModule.forRoot(),
+    // forRoot trás os providers ficando global os providers
+    // Modulos compartilhados, foi retirado modulos, estes etão dentro deste modulo,
+    // puxado pelo modulo raiz, sendo usado por outros modulos tbm
+    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules /* Carrega os modulos lazy em background*/}) // configurando Rotas
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, // coloca # fazendo com q a url após seja processada no cliente, em servers http em produção. Procure na doumentação do angula para configurar o servidor (apache tomcat etc) para não precisar
-    /* Foi criado em CORE, e importado estes providers tudo junto, deixando código mais limpo - RestaurantsService, ShoppingcartService, OrderService,*/ 
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
+    // {provide: LocationStrategy, useClass: HashLocationStrategy} coloca # fazendo com q a url após seja processada no cliente, em servers
+    // http em produção. Procure na doumentação do angula para configurar o servidor
+    // (apache tomcat etc) para não precisar
+    /* Foi criado em CORE, e importado estes providers tudo junto, deixando código mais limpo -
+    RestaurantsService, ShoppingcartService, OrderService,*/
     {provide: LOCALE_ID, useValue: 'pt-BR'}],
-     //modulo raiz - fica disponivel (injetado) pra toda app componente e servicos, todos compartolham a mesma intacia deste, como singletons
+     /* modulo raiz - fica disponivel (injetado) pra toda app componente e servicos,
+     todos compartolham a mesma intacia deste, como singletons */
   bootstrap: [AppComponent]
 })
 export class AppModule { }

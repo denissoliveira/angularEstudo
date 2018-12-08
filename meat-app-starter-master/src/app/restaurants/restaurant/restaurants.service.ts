@@ -21,15 +21,15 @@ export class RestaurantsService {
         return this.http.get<Restaurant[]>(`${MEAT_API}/restaurants`, {params: params});
     }
 
-    restaurantById(id: string): Observable<Restaurant>{
+    restaurantById(id: string): Observable<Restaurant> {
         return this.http.get<Restaurant>(`${MEAT_API}/restaurants/${id}`);
     }
 
-    reviewsOfRestaurant(id: string): Observable<any>{
+    reviewsOfRestaurant(id: string): Observable<any> {
         return this.http.get(`${MEAT_API}/restaurants/${id}/reviews`);
     }
 
-    menuOfRestaurant(id: string): Observable<MenuItem[]>{
+    menuOfRestaurant(id: string): Observable<MenuItem[]> {
         return this.http.get<MenuItem[]>(`${MEAT_API}/restaurants/${id}/menu`);
     }
 
