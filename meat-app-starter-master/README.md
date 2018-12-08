@@ -90,6 +90,10 @@ Observando arquivos modificados
 
 Mais em https://github.com/conventional-changelog/standard-version/blob/master/README.md
 
+
+### @types em packege.json
+Usado no autocomplet
+
 ## Upgrade para Angular 4.3
 
 ### Dependências dos pacotes que devem ficar em package.json:
