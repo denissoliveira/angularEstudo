@@ -1,3 +1,4 @@
+
 # Meat - Angular App Starter
 
 ## 1. Passos para começar
@@ -72,8 +73,18 @@ ng build --prod --bh=/nomeDiretorio/
     "release": "standard-version"
   }
 }
-```
 
+```
+"release": "standard-version",
+    "release-as": "npm run release -- --release-as 0.0.0"
+
+## nodemon
+Observando arquivos modificados
+`npm i nodemon -g`
+
+##Para usar como servidor https
+
+`nodemon -w backend backend/dist/server.js`
 
 
 
