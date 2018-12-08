@@ -14,14 +14,15 @@ server.use(middlewares)
 
 server.use(jsonServer.bodyParser)
 
+// middleware para login
 server.post('/login', handleAuthentication)
 
 // Use default router
 server.use(router)
 
 const options = {
-  cert: fs.readFileSync('./backend/keys/cert.pem'),
-  key: fs.readFileSync('./backend/keys/key.pem')
+  cert: fs.readFileSync('./keys/cert.pem'),
+  key: fs.readFileSync('./keys/key.pem')
 }
 
 https.createServer(options, server).listen(3001, () => {

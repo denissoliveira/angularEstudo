@@ -82,7 +82,7 @@ ng build --prod --bh=/nomeDiretorio/
 Observando arquivos modificados
 `npm i nodemon -g`
 
-##Para usar como servidor https
+##Para usar como servidor https teste
 
 `nodemon -w backend backend/dist/server.js`
 

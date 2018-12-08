@@ -1,13 +1,23 @@
 "use strict";
 exports.__esModule = true;
+var users_1 = require("./users");
 exports.handleAuthentication = function (req, resp) {
     var user = req.body;
     if (isValid(user)) {
+        var dbUser = users_1.users[user.email];
+        console.log('Teste user logado');
+        resp.json({ name: dbUser.name, email: dbUser.email });
     }
     else {
+        console.log('Teste user Erro');
         resp.status(403).json({ message: 'Dados inválidos.' });
     }
 };
 function isValid(user) {
-    return false;
+    if (!user) {
+        console.log('Teste user invalido');
+        return false;
+    }
+    var dbUser = users_1.users[user.email];
+    return dbUser !== undefined && dbUser.macthes(user);
 }
