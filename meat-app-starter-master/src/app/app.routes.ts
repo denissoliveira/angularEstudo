@@ -7,19 +7,22 @@ import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/review
 import { OrderSummaryComponent } from './order/order-summary/order-summary.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './security/login/login.component';
+import { LoggerInGuard } from './security/loggedin.guard';
 
 export const ROUTES: Routes = [
     {path: '', component: HomeComponent},
+    {path: 'login/:to', component: LoginComponent},
     {path: 'login', component: LoginComponent},
-    {path: 'about', loadChildren: './about/about.module#AboutModule'}, // lazyModule
-    {path: 'restaurants', component: RestaurantsComponent},
     {path: 'restaurants/:id', component: RestaurantDetailComponent,
         children: [
             {path: '', redirectTo: 'menu', pathMatch: 'full'}, // Após 'restaurants/:id' se não digitar nada, é redirecionado para menu
             {path: 'menu', component: MenuComponent},
             {path: 'reviews', component: ReviewsComponent}
     ]},
+    {path: 'restaurants', component: RestaurantsComponent},
     {path: 'order-summary', component: OrderSummaryComponent},
-    {path: 'order', loadChildren: './order/order.module#OrderModule'}, // LazyModule
+    // LazyModule canLoad: [LoggerInGuard] pergunta se ele pode carregar, se loggin esta ok
+    {path: 'order', loadChildren: './order/order.module#OrderModule', canLoad: [LoggerInGuard]},
+    {path: 'about', loadChildren: './about/about.module#AboutModule'}, // lazyModule
     {path: '**', component: NotFoundComponent} // rota de wildcard página não encontrada
 ]
