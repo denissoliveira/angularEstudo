@@ -22,7 +22,7 @@ export const ROUTES: Routes = [
     {path: 'restaurants', component: RestaurantsComponent},
     {path: 'order-summary', component: OrderSummaryComponent},
     // LazyModule canLoad: [LoggerInGuard] pergunta se ele pode carregar, se loggin esta ok
-    {path: 'order', loadChildren: './order/order.module#OrderModule', canLoad: [LoggerInGuard]},
+    {path: 'order', loadChildren: './order/order.module#OrderModule', canLoad: [LoggerInGuard], canActivate: [LoggerInGuard]},
     {path: 'about', loadChildren: './about/about.module#AboutModule'}, // lazyModule
     {path: '**', component: NotFoundComponent} // rota de wildcard página não encontrada
 ]

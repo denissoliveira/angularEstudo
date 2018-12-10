@@ -23,7 +23,7 @@ export class LoginService {
     }
 
     handleLogin(path?: string) {
-        this.router.navigate(['/login', path])
+        this.router.navigate(['/login', btoa(path)]) // btoa criptografa a url, tem q ser esfeito depois para ser lido
     }
 
 }
