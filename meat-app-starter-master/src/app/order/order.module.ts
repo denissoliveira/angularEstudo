@@ -12,7 +12,7 @@ const ROUTES: Routes = [
 
 @NgModule({
     declarations: [OrderComponent, OrderItemsComponent, DeliveryCostsComponent],
-    imports: [SharedModule, RouterModule.forChild(ROUTES)] //SharedModule modulo compartilhado criado , já tem vários modulos de uso comum
-    //não precisa usar export pq estes modulos não precisa compartilhar nada com ninguém, somente ele usa seus componentes
+    imports: [SharedModule, RouterModule.forChild(ROUTES)] // SharedModule modulo compartilhado criado , já tem vários modulos de uso comum
+    // não precisa usar export pq estes modulos não precisa compartilhar nada com ninguém, somente ele usa seus componentes
 })
 export class OrderModule {}
