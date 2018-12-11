@@ -49,7 +49,7 @@ export class RestaurantsComponent implements OnInit {
     this.searchControl.valueChanges
       .debounceTime(500) // aguarda tempo até se executado
       .distinctUntilChanged() // evita repetição, deixando somente eventos únicos (no caso aqui texto digitado)
-      //.do(searchTerm => console.log(`q = ${searchTerm}`)) faz alguma coisa, foi usado para teste
+      // .do(searchTerm => console.log(`q = ${searchTerm}`)) faz alguma coisa, foi usado para teste
       .switchMap(searchTerm => 
         this.restaurantsService.restaurants(searchTerm) // evita que um subscribe sobrescreva outro
         .catch(error => Observable.from([]))) // caso aconteça um erro ele continua a execução (ex. erro de acesso ao serv)

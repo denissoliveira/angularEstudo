@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { ROUTES } from './app.routes';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +20,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { LoginComponent } from './security/login/login.component';
 import { UserDetailComponent } from './header/user-detail/user-detail.component';
+import { ApplicationErrorHandler } from './app.error-handler';
 
 
 @NgModule({
@@ -58,7 +58,7 @@ import { UserDetailComponent } from './header/user-detail/user-detail.component'
     // (apache tomcat etc) para não precisar
     /* Foi criado em CORE, e importado estes providers tudo junto, deixando código mais limpo -
     RestaurantsService, ShoppingcartService, OrderService,*/
-    {provide: LOCALE_ID, useValue: 'pt-BR'}],
+    {provide: LOCALE_ID, useValue: 'pt-BR'}, {provide: ErrorHandler, useClass: ApplicationErrorHandler}],
      /* modulo raiz - fica disponivel (injetado) pra toda app componente e servicos,
      todos compartolham a mesma intacia deste, como singletons */
   bootstrap: [AppComponent]
